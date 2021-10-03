@@ -1,4 +1,4 @@
-module github.com/muety/caddy-pirsch.plugin
+module github.com/muety/caddy-pirsch-plugin
 
 go 1.16
 
