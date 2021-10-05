@@ -43,11 +43,12 @@ func (m *PirschPlugin) Provision(ctx caddy.Context) (err error) {
 }
 
 func (m *PirschPlugin) ServeHTTP(w http.ResponseWriter, r *http.Request, next caddyhttp.Handler) error {
-	go func() {
-		if err := m.client.Hit(r.Clone(context.TODO())); err != nil {
+	r2 := r.Clone(context.TODO())
+	go func(r *http.Request) {
+		if err := m.client.Hit(r); err != nil {
 			m.logger.Error("failed to send hit to pirsch: %v", zap.Error(err))
 		}
-	}()
+	}(r2)
 	return next.ServeHTTP(w, r)
 }
 
