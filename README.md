@@ -1,4 +1,5 @@
 [![Go](https://github.com/muety/caddy-pirsch-plugin/workflows/Go/badge.svg)](https://github.com/muety/caddy-pirsch-plugin/actions)
+![Coding Time](https://img.shields.io/endpoint?url=https://wakapi.dev/api/compat/shields/v1/n1try/interval:any/project:caddy-pirsch-plugin&color=blue&label=coding%20time)
 
 # caddy-pirsch-plugin
 
