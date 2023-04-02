@@ -10,7 +10,6 @@ A Caddy v2 plugin to track requests in [Pirsch Analytics](https://pirsch.io).
 pirsch [<matcher>] {
     client_id <pirsch-client-id>
     client_secret <pirsch-client-secret>
-    host_name <pirsch-host-name>
     base_url <alternative-api-url>
 }
 ```
@@ -52,7 +51,6 @@ http://localhost:8080 {
     pirsch @html {
         client_id cCfoZttXzRH5AyOpiu97wqXH3j5lYXcg
         client_secret olshVxS73jWQFhXJE86DdoR4McPBh02OendvyLtajX2EA3aasfywb3q3uZio9tDL
-        host_name mysite.example.org
     }
 
     file_server

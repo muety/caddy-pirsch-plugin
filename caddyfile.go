@@ -30,12 +30,6 @@ func parseCaddyfile(h httpcaddyfile.Helper) (caddyhttp.MiddlewareHandler, error)
 					return nil, h.ArgErr()
 				}
 				p.ClientSecret = clientSecret
-			case "host_name":
-				var hostName string
-				if !h.AllArgs(&hostName) {
-					return nil, h.ArgErr()
-				}
-				p.HostName = hostName
 			case "base_url":
 				var baseUrl string
 				if !h.AllArgs(&baseUrl) {
@@ -52,8 +46,8 @@ func parseCaddyfile(h httpcaddyfile.Helper) (caddyhttp.MiddlewareHandler, error)
 		}
 	}
 
-	if p.ClientId == "" || p.ClientSecret == "" || p.HostName == "" {
-		return nil, fmt.Errorf("missing configuration option (one of 'client_id', 'client_secret', 'host_name')")
+	if p.ClientId == "" || p.ClientSecret == "" {
+		return nil, fmt.Errorf("missing configuration option (one of 'client_id', 'client_secret')")
 	}
 
 	return p, nil

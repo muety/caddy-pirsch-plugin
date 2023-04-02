@@ -16,7 +16,6 @@ func init() {
 type PirschPlugin struct {
 	ClientId     string `json:"client_id,omitempty"`
 	ClientSecret string `json:"client_secret,omitempty"`
-	HostName     string `json:"host_name,omitempty"`
 	BaseURL      string `json:"base_url,omitempty"`
 
 	logger *zap.Logger
@@ -36,7 +35,7 @@ func (m *PirschPlugin) Provision(ctx caddy.Context) (err error) {
 		clientConfig = &pirsch.ClientConfig{BaseURL: m.BaseURL}
 	}
 
-	m.client = pirsch.NewClient(m.ClientId, m.ClientSecret, m.HostName, clientConfig)
+	m.client = pirsch.NewClient(m.ClientId, m.ClientSecret, clientConfig)
 	m.logger = ctx.Logger(m)
 
 	return err
