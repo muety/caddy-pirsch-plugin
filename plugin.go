@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/caddyserver/caddy/v2"
 	"github.com/caddyserver/caddy/v2/modules/caddyhttp"
-	"github.com/pirsch-analytics/pirsch-go-sdk"
+	pirsch "github.com/pirsch-analytics/pirsch-go-sdk/v2/pkg"
 	"go.uber.org/zap"
 	"net/http"
 )
@@ -44,7 +44,7 @@ func (m *PirschPlugin) Provision(ctx caddy.Context) (err error) {
 func (m *PirschPlugin) ServeHTTP(w http.ResponseWriter, r *http.Request, next caddyhttp.Handler) error {
 	r2 := r.Clone(context.TODO())
 	go func(r *http.Request) {
-		if err := m.client.Hit(r); err != nil {
+		if err := m.client.PageView(r, nil); err != nil {
 			m.logger.Error("failed to send hit to pirsch: %v", zap.Error(err))
 		}
 	}(r2)
